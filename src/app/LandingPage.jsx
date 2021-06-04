@@ -1,5 +1,6 @@
 import React from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
+import { Switch, Route, NavLink, useLocation } from "react-router-dom";
+
 import "../App.css";
 
 import {
@@ -11,9 +12,16 @@ import {
   Product3,
   Product4,
   Product5,
+  SideItem1,
+  SideItem2,
+  SideItem3,
+  SubSideItem,
+  SubSideItem5,
 } from "./Pages";
 
 export function LandingPage() {
+  const { pathname } = useLocation();
+  console.log("CURRENT PATH ", pathname);
   return (
     <div className="landing-page">
       <div className="left">
@@ -84,6 +92,32 @@ export function LandingPage() {
           >
             <p> contact</p>
           </NavLink>
+          <NavLink
+            exact
+            to="/sideitem1"
+            activeClassName="active-nav"
+            className="normal-nav"
+          >
+            <p> side item1</p>
+          </NavLink>
+          <NavLink
+            exact
+            to="/sideitem2"
+            isActive={() => ["/sideitem2", "/subsideite5"].includes(pathname)}
+            activeClassName="active-nav"
+            className="normal-nav"
+          >
+            <p> side item2</p>
+          </NavLink>
+          <NavLink
+            exact
+            to="/sideitem3"
+            isActive={() => ["/sideitem3", "/subsideitem"].includes(pathname)}
+            activeClassName="active-nav"
+            className="normal-nav"
+          >
+            <p> side item3</p>
+          </NavLink>
         </nav>
       </div>
       <div className="right">
@@ -97,8 +131,22 @@ export function LandingPage() {
           <Route exact path="/product4" component={Product4} />
           <Route exact path="/product5" component={Product5} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path="/sideitem1" component={SideItem1} />
+          <Route exact path="/sideitem2" component={SideItem2} />
+          <Route exact path="/subsideitem5" component={SubSideItem5} />
+          <Route exact path="/sideitem3" component={SideItem3} />
+          <Route exact path="/subsideitem" component={SubSideItem} />
         </Switch>
       </div>
     </div>
   );
 }
+
+// const SubSideBar = () => {
+//   return (
+//     <Switch>
+//       <Route exact path="/sideitem3" component={SideItem3} />
+//       <Route exact path="/subsideitem" component={SubSideItem} />
+//     </Switch>
+//   );
+// };
