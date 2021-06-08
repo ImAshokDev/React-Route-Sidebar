@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, Route, Switch } from "react-router-dom";
+
+import "../App.css";
 
 export function Home() {
   useEffect(() => {
@@ -32,9 +34,92 @@ export function Product4() {
 export function Product5() {
   return <div>Product5 Works!</div>;
 }
+
+// ==========================  CONTACT  ===================
+
 export function Contact() {
-  return <div>Contact Works!</div>;
+  return (
+    <div>
+      <div>
+        <nav className="navbar2">
+          <NavLink
+            exact
+            to="/contact1"
+            activeClassName="active-nav2"
+            className="normal-nav2"
+          >
+            <p>Contact 1</p>
+          </NavLink>
+          <NavLink
+            exact
+            to="/contact2"
+            activeClassName="active-nav2"
+            className="normal-nav2"
+          >
+            <p>Contact 2</p>
+          </NavLink>
+        </nav>
+      </div>
+      <div>
+        <Switch>
+          <Route exact path="/contact1" component={Contact1} />
+          <Route exact path="/contact2" component={Contact2} />
+        </Switch>
+      </div>
+    </div>
+  );
 }
+
+export function Contact1() {
+  return (
+    <div>
+      <div>Contact Works! 1</div>
+      <button>
+        <Link to="/add1">
+          <p>add contact 1</p>
+        </Link>
+      </button>
+    </div>
+  );
+}
+export function Contact2() {
+  return (
+    <div>
+      <div>Contact Works! 2</div>
+      <button>
+        <Link to="/add2">
+          <p>add contact 2</p>
+        </Link>
+      </button>
+    </div>
+  );
+}
+
+export function Add1() {
+  return (
+    <div>
+      <div>Add Contact Works! 1</div>
+      <button>
+        <Link to="/contact1">
+          <p>Back contact 1</p>
+        </Link>
+      </button>
+    </div>
+  );
+}
+export function Add2() {
+  return (
+    <div>
+      <div>Add Contact Works! 2</div>
+      <button>
+        <Link to="/contact2">
+          <p>Back contact 2</p>
+        </Link>
+      </button>
+    </div>
+  );
+}
+// ==========================  CONTACT END ===================
 
 export function SideItem1() {
   const [data, setData] = useState(null);

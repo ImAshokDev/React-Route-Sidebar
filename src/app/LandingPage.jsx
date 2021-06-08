@@ -17,6 +17,8 @@ import {
   SideItem3,
   SubSideItem,
   SubSideItem5,
+  Add1,
+  Add2,
 } from "./Pages";
 
 export function LandingPage() {
@@ -86,7 +88,10 @@ export function LandingPage() {
           </NavLink>
           <NavLink
             exact
-            to="/contact"
+            to="/contact1"
+            isActive={() =>
+              ["/contact1", "/contact2", "/add1", "/add2"].includes(pathname)
+            }
             activeClassName="active-nav"
             className="normal-nav"
           >
@@ -130,12 +135,18 @@ export function LandingPage() {
           <Route exact path="/product3" component={Product3} />
           <Route exact path="/product4" component={Product4} />
           <Route exact path="/product5" component={Product5} />
-          <Route exact path="/contact" component={Contact} />
+
           <Route exact path="/sideitem1" component={SideItem1} />
           <Route exact path="/sideitem2" component={SideItem2} />
           <Route exact path="/subsideitem5" component={SubSideItem5} />
           <Route exact path="/sideitem3" component={SideItem3} />
           <Route exact path="/subsideitem" component={SubSideItem} />
+
+          {/* <Route exact path="/contact" component={Contact} /> */}
+          <Route exact path="/contact1" component={Contact} />
+          <Route exact path="/contact2" component={Contact} />
+          <Route exact path="/add1" component={Add1} />
+          <Route exact path="/add2" component={Add2} />
         </Switch>
       </div>
     </div>
